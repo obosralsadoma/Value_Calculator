@@ -1,4 +1,11 @@
+from time import sleep
+
 def mass():
+
+    def err():
+        print("Перезапуск функции...")
+        sleep(3)
+        mass()
     global result
     n1 = int(input("Напишите исходное число: "))
     e1 = input("Напишите исходную единицу измерения (мг|кг|г|т): ")
@@ -12,6 +19,8 @@ def mass():
             result = n1 / 1000
         elif e2 == "мг":
             result = n1 * 1000000
+        else:
+            err()
     elif e1 == "г":
         if e2 == "кг":
             result = n1 / 1000
@@ -21,27 +30,34 @@ def mass():
             result = n1 / 1000000
         elif e2 == "мг":
             result = n1 * 1000
+        else:
+            err()
     elif e1 == "т":
-            if e2 == "кг":
-                result = n1 * 1000
-            elif e2 == "г":
-                result = n1 * 1000000
-            elif e2 == "т":
-                result = n1
-            elif e2 == "мг":
-                result = n1 * 1000000000
+        if e2 == "кг":
+            result = n1 * 1000
+        elif e2 == "г":
+            result = n1 * 1000000
+        elif e2 == "т":
+            result = n1
+        elif e2 == "мг":
+            result = n1 * 1000000000
+        else:
+            err()
     elif e1 == "мг":
-            if e2 == "кг":
-                result = n1 / 1000000
-            elif e2 == "г":
-                result = n1 / 1000
-            elif e2 == "т":
-                result = n1 / 1000000000
-            elif e2 == "мг":
-                result = n1
+        if e2 == "кг":
+            result = n1 / 1000000
+        elif e2 == "г":
+            result = n1 / 1000
+        elif e2 == "т":
+            result = n1 / 1000000000
+        elif e2 == "мг":
+            result = n1
+        else:
+            err()
+    else:
+        err()
 
     print(f"Результат: {n1} {e1} = {result} {e2}")
-    print("Перезапустите программу для повторного использования.")
 
 print("=" * 27)
 print("\tКалькулятор величин\t")
